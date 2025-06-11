@@ -7,6 +7,7 @@ from google.adk.tools.base_tool import BaseTool
 from google.adk.tools.retrieval.vertex_ai_rag_retrieval import VertexAiRagRetrieval
 from google.adk.tools.tool_context import ToolContext
 from vertexai.preview import rag
+
 from ..config import agent_config
 
 

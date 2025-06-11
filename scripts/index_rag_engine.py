@@ -34,6 +34,7 @@ def upload_to_rag(corpus: str, project: str, location: str, entries: List[Dict[s
     vertexai.init(project=project, location=location)
     for entry in entries:
         description = json.dumps(entry["metadata"])
+        print(entry)
         rag.upload_file(
             corpus_name=corpus,
             path=str(entry["path"]),
@@ -47,7 +48,7 @@ def main() -> None:
     load_dotenv()
     parser = argparse.ArgumentParser(description="Upload markdown files to a RAG corpus")
     parser.add_argument("--markdown-dir", type=Path, default=Path("docs"), help="Directory with markdown files")
-    parser.add_argument("--metadata-file", type=Path, required=True, help="JSON file with metadata")
+    parser.add_argument("--metadata-file", type=Path, default=Path("docs/metadata.json"), help="JSON file with metadata")
     parser.add_argument("--corpus", default=os.getenv("RAG_CORPUS"), help="RAG corpus name")
     parser.add_argument("--project", default=os.getenv("GOOGLE_CLOUD_PROJECT"), help="GCP project id")
     parser.add_argument("--location", default=os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1"), help="GCP region")

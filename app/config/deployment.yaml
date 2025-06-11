@@ -1,0 +1,3 @@
+project: work-462617
+location: us-central1
+staging_bucket: gs://ppet-test

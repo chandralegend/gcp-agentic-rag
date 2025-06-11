@@ -6,7 +6,10 @@ import vertexai
 from vertexai import agent_engines
 from google.adk.sessions import VertexAiSessionService
 
-from ..config import deployment_config
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from app.config import deployment_config
 
 
 def pretty_print_event(event: dict) -> None:
@@ -18,8 +21,6 @@ def pretty_print_event(event: dict) -> None:
     for part in parts:
         if "text" in part:
             text = part["text"]
-            if len(text) > 200:
-                text = text[:197] + "..."
             print(f"[{author}]: {text}")
         elif "functionCall" in part:
             func_call = part["functionCall"]

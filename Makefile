@@ -1,10 +1,16 @@
 .PHONY: run deploy rag-engine
 
+setup:
+	poetry install
+
+web:
+	poetry run adk web
+
 run:
-	python scripts/run_agent.py
+	poetry run python scripts/run_agent.py
 
 deploy:
-	python scripts/deploy.py
+	poetry run python scripts/deploy.py
 
 rag-engine:
-	python scripts/create_rag_engine.py
+	poetry run python scripts/create_rag_engine.py
