@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import os
 from typing import Any, List
 
 from google.genai import types
 from google.adk.tools.base_tool import BaseTool
+from google.adk.tools.retrieval.vertex_ai_rag_retrieval import VertexAiRagRetrieval
 from google.adk.tools.tool_context import ToolContext
 from vertexai.preview import rag
 
@@ -43,3 +45,23 @@ class RagEngineQueryTool(BaseTool):
                 "source_uri": ctx.source_uri,
             })
         return results
+
+
+ask_vertex_ai_rag_engine = VertexAiRagRetrieval(
+    name="retrieve_rag_documentation",
+    description="Use this tool to retrieve documentation and reference materials for the question from the RAG corpus,",
+    rag_resources=[rag.RagResource(rag_corpus=os.environ.get("RAG_CORPUS"))],
+    similarity_top_k=10,
+    vector_distance_threshold=0.6,
+)
+
+rag_engine_tool = RagEngineQueryTool(
+    rag_corpus=os.environ.get("RAG_CORPUS", "default_rag_corpus"),
+    name="rag_engine_query_tool",
+    description="Tool to query a Vertex AI RAG Engine corpus for relevant documents."
+)
+
+__all__ = [
+    "ask_vertex_ai_rag_engine",
+    "rag_engine_tool",
+]
