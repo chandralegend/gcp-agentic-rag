@@ -1,4 +1,4 @@
-# gcp-agentic-rag
+# Vertex AI RAG Agent Template
 
 This repository provides a small boilerplate for building a Retrieval Augmented Generation (RAG) agent using the Vertex AI Agent Development Kit (ADK) and Vertex AI RAG Engine.
 
@@ -6,17 +6,22 @@ Configuration is managed through YAML files located in the `config/` directory. 
 
 ## Configuration
 
-- **config/agent.yaml** – parameters for the agent such as model name, datastore details and the RAG corpus id.
-- **config/deployment.yaml** – project, location and staging bucket used when deploying the agent.
-- **config/prompts.yaml** – prompt text. The `agent_instructions` entry is loaded and used when creating the agent.
+- **src/config/agent.yaml** – parameters for the agent such as model name, datastore details and the RAG corpus id.
+- **src/config/deployment.yaml** – project, location and staging bucket used when deploying the agent.
+- **src/config/prompts.yaml** – prompt text. The `default` entry is loaded and used when creating the agent.
 
 ## Usage
 
 Install dependencies (using Poetry or pip) and adjust the YAML files to match your environment.
 
+```bash
+make install  # install dependencies
+```
+
 Common tasks are available through the `Makefile`:
 
 ```bash
+make web        # start a web server to view the agent in the browser
 make run        # run the deployed agent in the terminal
 make deploy     # deploy the agent to Vertex AI Agent Engine
 make rag-engine # create a RAG Engine corpus from local markdown files
