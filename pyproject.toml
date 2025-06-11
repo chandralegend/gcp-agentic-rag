@@ -1,0 +1,23 @@
+[project]
+name = "gcp-agentic-rag"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "chandralegend",email = "irugalbandarachandra@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "google-cloud-datastore (>=2.21.0,<3.0.0)",
+    "google-adk (>=1.2.1,<2.0.0)",
+    "google-genai (>=1.19.0,<2.0.0)",
+    "beautifulsoup4 (>=4.13.4,<5.0.0)",
+    "markdownify (>=1.1.0,<2.0.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
