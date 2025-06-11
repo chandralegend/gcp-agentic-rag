@@ -20,6 +20,10 @@ Common tasks are available through the `Makefile`:
 make run        # run the deployed agent in the terminal
 make deploy     # deploy the agent to Vertex AI Agent Engine
 make rag-engine # create a RAG Engine corpus from local markdown files
+python scripts/index_datastore.py --metadata-file metadata.json \ 
+    # index markdown and metadata into Cloud Datastore
+python scripts/index_rag_engine.py --metadata-file metadata.json \ 
+    --corpus your-corpus-id  # upload files to an existing RAG corpus
 ```
 
 The deployment script writes the created agent engine id to `.env`. Ensure this file contains your Vertex project credentials before running the make commands.
