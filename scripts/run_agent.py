@@ -6,7 +6,7 @@ import vertexai
 from vertexai import agent_engines
 from google.adk.sessions import VertexAiSessionService
 
-from src.config import deployment_config
+from app.config import deployment_config
 
 
 def pretty_print_event(event: dict) -> None:

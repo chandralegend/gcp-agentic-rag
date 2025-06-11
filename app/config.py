@@ -6,7 +6,7 @@ from typing import Any, Dict
 import yaml
 from pydantic import BaseModel
 
-_CONFIG_DIR = Path(__file__).resolve().parent.parent / "config"
+_CONFIG_DIR = Path(__file__).resolve().parent / "config"
 
 
 def _load_yaml(filename: str) -> Dict[str, Any]:
@@ -27,6 +27,7 @@ class AgentConfig(BaseModel):
     datastore_id: str = ""
     datastore_kind: str = "Document"
     rag_corpus: str | None = None
+    agent_prompt_id: str = "default"
 
 
 class DeploymentConfig(BaseModel):

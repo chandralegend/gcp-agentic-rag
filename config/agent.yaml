@@ -1,7 +1,0 @@
-name: rag_agent
-model: gemini-1.5-pro
-project_id: ljondtls-vuu6-twkx-klix-f00rvr
-location: us-central1
-datastore_id: your-datastore-id
-datastore_kind: Document
-rag_corpus: projects/ljondtls-vuu6-twkx-klix-f00rvr/locations/us-central1/ragCorpora/2305843009213693952
