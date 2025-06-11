@@ -6,7 +6,7 @@ from vertexai import agent_engines
 from vertexai.preview.reasoning_engines import AdkApp
 from dotenv import set_key
 
-from datastore_rag.agent import rag_agent
+from ..agent import rag_agent
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
