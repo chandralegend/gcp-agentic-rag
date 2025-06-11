@@ -6,8 +6,12 @@ from vertexai import agent_engines
 from vertexai.preview.reasoning_engines import AdkApp
 from dotenv import set_key
 
-from ..agent import rag_agent
-from ..config import deployment_config
+import sys
+# agent and config is in the src directory
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from src.agent import rag_agent
+from src.config import deployment_config
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -29,7 +33,7 @@ remote_app = agent_engines.create(
         "google-adk",
         "python-dotenv",
     ],
-    extra_packages=["./datastore_rag"],
+    extra_packages=["./src"],
 )
 logger.info("Deployed agent to Vertex AI Agent Engine successfully, resource name: %s", remote_app.resource_name)
 set_key(ENV_FILE_PATH, "AGENT_ENGINE_ID", remote_app.resource_name)

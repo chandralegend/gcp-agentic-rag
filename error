@@ -1,0 +1,43 @@
+cirugal1@cloudshell:~/gcp-agentic-rag (ljondtls-vuu6-twkx-klix-f00rvr)$ make deploy
+poetry run python scripts/deploy.py
+INFO:__main__:Deploying agent to Vertex AI Agent Engine...
+Identified the following requirements: {'pydantic': '2.11.5', 'cloudpickle': '3.1.1', 'google-cloud-aiplatform': '1.97.0'}
+INFO:vertexai.agent_engines:Identified the following requirements: {'pydantic': '2.11.5', 'cloudpickle': '3.1.1', 'google-cloud-aiplatform': '1.97.0'}
+The following requirements are missing: {'pydantic', 'cloudpickle'}
+WARNING:vertexai.agent_engines:The following requirements are missing: {'pydantic', 'cloudpickle'}
+The following requirements are appended: {'pydantic==2.11.5', 'cloudpickle==3.1.1'}
+INFO:vertexai.agent_engines:The following requirements are appended: {'pydantic==2.11.5', 'cloudpickle==3.1.1'}
+The final list of requirements: ['google-cloud-aiplatform[adk,agent-engines]==1.97.0', 'google-adk', 'python-dotenv', 'pydantic==2.11.5', 'cloudpickle==3.1.1']
+INFO:vertexai.agent_engines:The final list of requirements: ['google-cloud-aiplatform[adk,agent-engines]==1.97.0', 'google-adk', 'python-dotenv', 'pydantic==2.11.5', 'cloudpickle==3.1.1']
+Using bucket ppet-sop-test
+INFO:vertexai.agent_engines:Using bucket ppet-sop-test
+Wrote to gs://ppet-sop-test/agent_engine/agent_engine.pkl
+INFO:vertexai.agent_engines:Wrote to gs://ppet-sop-test/agent_engine/agent_engine.pkl
+Writing to gs://ppet-sop-test/agent_engine/requirements.txt
+INFO:vertexai.agent_engines:Writing to gs://ppet-sop-test/agent_engine/requirements.txt
+Creating in-memory tarfile of extra_packages
+INFO:vertexai.agent_engines:Creating in-memory tarfile of extra_packages
+Writing to gs://ppet-sop-test/agent_engine/dependencies.tar.gz
+INFO:vertexai.agent_engines:Writing to gs://ppet-sop-test/agent_engine/dependencies.tar.gz
+Creating AgentEngine
+INFO:vertexai.agent_engines:Creating AgentEngine
+Create AgentEngine backing LRO: projects/546812278355/locations/us-central1/reasoningEngines/7345485341450567680/operations/2744943251327811584
+INFO:vertexai.agent_engines:Create AgentEngine backing LRO: projects/546812278355/locations/us-central1/reasoningEngines/7345485341450567680/operations/2744943251327811584
+View progress and logs at https://console.cloud.google.com/logs/query?project=ljondtls-vuu6-twkx-klix-f00rvr
+INFO:vertexai.agent_engines:View progress and logs at https://console.cloud.google.com/logs/query?project=ljondtls-vuu6-twkx-klix-f00rvr
+Traceback (most recent call last):
+  File "/home/cirugal1/gcp-agentic-rag/scripts/deploy.py", line 29, in <module>
+    remote_app = agent_engines.create(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cirugal1/.cache/pypoetry/virtualenvs/gcp-agentic-rag-11HN4wL0-py3.12/lib/python3.12/site-packages/vertexai/agent_engines/__init__.py", line 148, in create
+    return AgentEngine.create(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/cirugal1/.cache/pypoetry/virtualenvs/gcp-agentic-rag-11HN4wL0-py3.12/lib/python3.12/site-packages/vertexai/agent_engines/_agent_engines.py", line 492, in create
+    created_resource = operation_future.result()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cirugal1/.cache/pypoetry/virtualenvs/gcp-agentic-rag-11HN4wL0-py3.12/lib/python3.12/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.InvalidArgument: 400 Reasoning Engine instance 7345485341450567680 failed to start and cannot serve traffic. Please refer to our documentation (https://cloud.google.com/vertex-ai/generative-ai/docs/reasoning-engine/troubleshooting/deploy) for checking logs and other troubleshooting tips.
+ Please refer to our documentation (https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/troubleshooting/deploy) for checking logs and other troubleshooting tips. 3: Reasoning Engine instance 7345485341450567680 failed to start and cannot serve traffic. Please refer to our documentation (https://cloud.google.com/vertex-ai/generative-ai/docs/reasoning-engine/troubleshooting/deploy) for checking logs and other troubleshooting tips.
+ Please refer to our documentation (https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/troubleshooting/deploy) for checking logs and other troubleshooting tips.
+make: *** [Makefile:7: deploy] Error 1

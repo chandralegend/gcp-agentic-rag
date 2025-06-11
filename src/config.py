@@ -6,7 +6,7 @@ from typing import Any, Dict
 import yaml
 from pydantic import BaseModel
 
-_CONFIG_DIR = Path(__file__).resolve().parent / "config"
+_CONFIG_DIR = Path(__file__).resolve().parent.parent / "config"
 
 
 def _load_yaml(filename: str) -> Dict[str, Any]:
