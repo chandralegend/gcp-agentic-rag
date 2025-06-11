@@ -1,8 +1,13 @@
-"""Prompts for the agent."""
+"""Load prompts from YAML configuration."""
 
-AGENT_INSTRUCTIONS =  (
-    "You are a helpful assistant with access to a specialized datastore. "
-    "Use the datastore search tool to retrieve information when a user asks a knowledge question. "
-    "If the conversation is casual or you are unsure, ask clarifying questions. "
-    "Always cite the retrieved sources when answering." 
-)
+from pathlib import Path
+import yaml
+
+_CONFIG_DIR = Path(__file__).resolve().parent / "config"
+
+with (_CONFIG_DIR / "prompts.yaml").open() as f:
+    _PROMPTS = yaml.safe_load(f) or {}
+
+AGENT_INSTRUCTIONS: str = _PROMPTS.get("agent_instructions", "")
+
+__all__ = ["AGENT_INSTRUCTIONS"]
