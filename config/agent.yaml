@@ -1,0 +1,7 @@
+name: rag_agent
+model: gemini-1.5-pro
+project_id: your-project-id
+location: us-central1
+datastore_id: your-datastore-id
+datastore_kind: Document
+rag_corpus: your-rag-corpus-id

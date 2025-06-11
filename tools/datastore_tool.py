@@ -1,5 +1,3 @@
-import os
-
 from typing import Any
 
 from google.genai import types
@@ -10,6 +8,7 @@ from ..utils.discover_datastore_searcher import (
     DiscoveryDatastoreSearcher,
     DiscoveryDatastoreSearcherConfig,
 )
+from ..config import agent_config
 
 
 class DatastoreSearchTool(BaseTool):
@@ -49,10 +48,10 @@ class DatastoreSearchTool(BaseTool):
 
 
 config = DiscoveryDatastoreSearcherConfig(
-    project_id=os.environ.get("GCP_PROJECT", ""),
-    location=os.environ.get("GCP_LOCATION", "us-central1"),
-    data_store_id=os.environ.get("DATASTORE_ID", ""),
-    datastore_kind=os.environ.get("DATASTORE_KIND", "Document"),
+    project_id=agent_config.project_id,
+    location=agent_config.location,
+    data_store_id=agent_config.datastore_id,
+    datastore_kind=agent_config.datastore_kind,
 )
 
 searcher = DiscoveryDatastoreSearcher(config=config)
